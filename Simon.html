@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simon</title>
+    <style>
+      #shell {
+        margin: auto;
+        margin-top: 10px;
+        border: 6px solid black;
+        height: 600px;
+        width: 600px;
+        border-radius: 50%;
+        text-align: center;
+        display: flex;
+        flex-flow: row wrap;
+        overflow: hidden;
+        position: relative;
+      }
+
+      #grn {
+        background-color: rgb(0, 150, 0);
+        border-right: 3px solid black;
+        border-bottom: 3px solid black;
+        width: 300px;
+        height: 300px;
+        position: relative;
+        box-sizing: border-box;
+      }
+
+      #red {
+        background-color: rgb(150, 0, 0);
+        border-left: 3px solid black;
+        border-bottom: 3px solid black;
+        width: 300px;
+        height: 300px;
+        position: relative;
+        box-sizing: border-box;
+      }
+
+      #blue {
+        background-color: rgb(0, 0, 150);
+        border-top: 3px solid black;
+        border-right: 3px solid black;
+        width: 300px;
+        height: 300px;
+        position: relative;
+        box-sizing: border-box;
+      }
+
+      #ylw {
+        background-color: rgb(150, 150, 0);
+        border-top: 3px solid black;
+        border-left: 3px solid black;
+        width: 300px;
+        height: 300px;
+        position: relative;
+        box-sizing: border-box;
+      }
+
+      #center {
+        border-radius: 50%;
+        background-color: black;
+        color: white;
+        height: 150px;
+        width: 150px;
+        z-index: 1;
+        position: absolute;
+        top: 225px;
+        left: 225px;
+        /* justify-content: center; */
+        /* align-items: center; */
+      }
+
+      #simon {
+        font-size: 32px;
+      }
+
+      #turn {
+        align-self: inherit;
+        font-size: 30px;
+      }
+
+      #grnLit {
+        background-color: green;
+      }
+
+      #redLit {
+        background-color: red;
+      }
+
+      #blueLit {
+        background-color: blue;
+      }
+
+      #ylwLit {
+        background-color: yellow;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="shell">
+      <div class="button" id="grn"></div>
+      <div class="button" id="red"></div>
+      <div id="center">
+        <div id="simon">Simon</div>
+        <br />
+        <br />
+        <div id="turn">0</div>
+      </div>
+      <div class="button" id="blue"></div>
+      <div class="button" id="ylw"></div>
+    </div>
+    <script>
+      let green = document.getElementById("grn");
+      let red = document.getElementById("red");
+      let blue = document.getElementById("blue");
+      let yellow = document.getElementById("ylw");
+
+      var buttons = document.getElementsByClassName("button");
+
+      green.addEventListener("click", lightGrn());
+
+      function lightGrn() {
+        document.getElementById("grn").style.backgroundColor = "Green";
+      }
+
+      function startTurn() {
+        return buttons[Math.floor(Math.random() * buttons.length)];
+      }
+    </script>
+  </body>
+</html>
