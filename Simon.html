@@ -105,6 +105,10 @@
         font-size: 20px;
         margin: auto;
       }
+
+      #controlPanel {
+        text-align: center;
+      }
     </style>
   </head>
   <body>
@@ -120,8 +124,11 @@
       <div class="button blue" id="3"></div>
       <div class="button yellow" id="4"></div>
     </div>
-    <button class="control" id="new">New Game</button>
-    <button class="control" id="submit">Submit Turn</button>
+    <div id="controlPanel">
+      <button class="control" id="new">New Game</button>
+      <button class="control" id="submit">Submit Turn</button>
+      <button class="control" id="next">Next Turn</button>
+    </div>
     <script>
       var green = document.getElementById("1");
       var red = document.getElementById("2");
@@ -131,6 +138,7 @@
       var turn = document.getElementById("turn");
       var newGame = document.getElementById("new");
       var submit = document.getElementById("submit");
+      var next = document.getElementById("next");
       var simon = [];
       var player = [];
       var buttonArray = [green, red, blue, yellow];
@@ -180,25 +188,56 @@
 
       green.addEventListener("click", () => {
         console.log(green.id);
-        return green.id;
+        player.push(green.id);
       });
 
-      green.addEventListener("mousedown", () => {});
+      green.addEventListener("mousedown", () => {
+        green.style.backgroundColor = "rgb(0, 256, 0)";
+      });
+
+      green.addEventListener("mouseup", () => {
+        green.style.backgroundColor = "rgb(0, 150, 0)";
+      });
 
       red.addEventListener("click", () => {
         console.log(red.id);
-        return red.id;
+        player.push(red.id);
       });
 
-      yellow.addEventListener("click", () => {
-        console.log(yellow.id);
-        return yellow.id;
+      red.addEventListener("mousedown", () => {
+        red.style.backgroundColor = "red";
+      });
+
+      red.addEventListener("mouseup", () => {
+        red.style.backgroundColor = "rgb(150, 0, 0)";
       });
 
       blue.addEventListener("click", () => {
         console.log(blue.id);
-        return blue.id;
+        player.push(blue.id);
       });
+
+      blue.addEventListener("mousedown", () => {
+        blue.style.backgroundColor = "blue";
+      });
+
+      blue.addEventListener("mouseup", () => {
+        blue.style.backgroundColor = "rgb(0, 0, 150)";
+      });
+
+      yellow.addEventListener("click", () => {
+        console.log(yellow.id);
+        player.push(yellow.id);
+      });
+
+      yellow.addEventListener("mousedown", () => {
+        yellow.style.backgroundColor = "yellow";
+      });
+
+      yellow.addEventListener("mouseup", () => {
+        yellow.style.backgroundColor = "rgb(150, 150, 0)";
+      });
+
       // newGame.addEventListener("click", () => {
       //   let first = Math.floor(Math.random() * 4) + 1;
       //   console.log(first);
