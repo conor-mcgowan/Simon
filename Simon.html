@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Simon</title>
+    <title>Simon Says</title>
     <style>
       #shell {
         margin: auto;
@@ -20,7 +20,7 @@
         position: relative;
       }
 
-      #grn {
+      .green {
         background-color: rgb(0, 150, 0);
         border-right: 3px solid black;
         border-bottom: 3px solid black;
@@ -30,7 +30,7 @@
         box-sizing: border-box;
       }
 
-      #red {
+      .red {
         background-color: rgb(150, 0, 0);
         border-left: 3px solid black;
         border-bottom: 3px solid black;
@@ -40,7 +40,7 @@
         box-sizing: border-box;
       }
 
-      #blue {
+      .blue {
         background-color: rgb(0, 0, 150);
         border-top: 3px solid black;
         border-right: 3px solid black;
@@ -50,7 +50,7 @@
         box-sizing: border-box;
       }
 
-      #ylw {
+      .yellow {
         background-color: rgb(150, 150, 0);
         border-top: 3px solid black;
         border-left: 3px solid black;
@@ -98,38 +98,70 @@
       #ylwLit {
         background-color: yellow;
       }
+
+      #new {
+        height: 40px;
+        width: 150px;
+        font-size: 20px;
+        margin: auto;
+      }
     </style>
   </head>
   <body>
     <div id="shell">
-      <div class="button" id="grn"></div>
-      <div class="button" id="red"></div>
+      <div class="button green" id="1" name="beep"></div>
+      <div class="button red" id="2"></div>
       <div id="center">
         <div id="simon">Simon</div>
         <br />
         <br />
         <div id="turn">0</div>
       </div>
-      <div class="button" id="blue"></div>
-      <div class="button" id="ylw"></div>
+      <div class="button blue" id="3"></div>
+      <div class="button yellow" id="4"></div>
     </div>
+    <button id="new">New Game</button>
     <script>
-      let green = document.getElementById("grn");
-      let red = document.getElementById("red");
-      let blue = document.getElementById("blue");
-      let yellow = document.getElementById("ylw");
-
+      var green = document.getElementById("1");
+      var red = document.getElementById("2");
+      var blue = document.getElementById("3");
+      var yellow = document.getElementById("4");
       var buttons = document.getElementsByClassName("button");
+      var turn = document.getElementById("turn");
+      var newGame = document.getElementById("new");
+      var simon = [];
+      var player = [];
+      var buttonArray = [green, red, blue, yellow];
 
-      green.addEventListener("click", lightGrn());
+      // buttonArray.forEach((button) => {
+      //   addEventListener("click", (evt) => {
+      //     console.log(evt.target.id);
+      //   });
+      // });
 
-      function lightGrn() {
-        document.getElementById("grn").style.backgroundColor = "Green";
-      }
+      green.addEventListener("click", () => {
+        console.log(green.id);
+        return green.id;
+      });
 
-      function startTurn() {
-        return buttons[Math.floor(Math.random() * buttons.length)];
-      }
+      red.addEventListener("click", () => {
+        console.log(red.id);
+        return red.id;
+      });
+
+      yellow.addEventListener("click", () => {
+        console.log(yellow.id);
+        return yellow.id;
+      });
+
+      blue.addEventListener("click", () => {
+        console.log(blue.id);
+        return blue.id;
+      });
+
+      newGame.addEventListener("click", () => {
+        let start = 1;
+      });
     </script>
   </body>
 </html>
