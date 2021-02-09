@@ -99,7 +99,7 @@
         background-color: yellow;
       }
 
-      #new {
+      .control {
         height: 40px;
         width: 150px;
         font-size: 20px;
@@ -120,7 +120,8 @@
       <div class="button blue" id="3"></div>
       <div class="button yellow" id="4"></div>
     </div>
-    <button id="new">New Game</button>
+    <button class="control" id="new">New Game</button>
+    <button class="control" id="submit">Submit Turn</button>
     <script>
       var green = document.getElementById("1");
       var red = document.getElementById("2");
@@ -129,6 +130,7 @@
       var buttons = document.getElementsByClassName("button");
       var turn = document.getElementById("turn");
       var newGame = document.getElementById("new");
+      var submit = document.getElementById("submit");
       var simon = [];
       var player = [];
       var buttonArray = [green, red, blue, yellow];
@@ -144,6 +146,38 @@
         return green.id;
       });
 
+      function light(n) {
+        if (n === 1) {
+          window.setTimeout(() => {
+            green.style.backgroundColor = "green";
+          }, 150);
+          window.setTimeout(() => {
+            green.style.backgroundColor = "rgb(0, 150, 0);";
+          }, 150);
+        } else if (n === 2) {
+          window.setTimeout(() => {
+            red.style.backgroundColor = "red";
+          }, 150);
+          window.setTimeout(() => {
+            red.style.backgroundColor = "rgb(150, 0, 0);";
+          }, 150);
+        } else if (n === 3) {
+          window.setTimeout(() => {
+            blue.style.backgroundColor = "blue";
+          }, 150);
+          window.setTimeout(() => {
+            blue.style.backgroundColor = "rgb(0, 0, 150);";
+          }, 150);
+        } else {
+          window.setTimeout(() => {
+            yellow.style.backgroundColor = "yellow";
+          }, 150);
+          window.setTimeout(() => {
+            yellow.style.backgroundColor = "rgb(150, 150, 0);";
+          }, 150);
+        }
+      }
+
       red.addEventListener("click", () => {
         console.log(red.id);
         return red.id;
@@ -158,10 +192,26 @@
         console.log(blue.id);
         return blue.id;
       });
+      // newGame.addEventListener("click", () => {
+      //   let first = Math.floor(Math.random() * 4) + 1;
+      //   console.log(first);
+      // });
 
       newGame.addEventListener("click", () => {
-        let start = 1;
+        let simon = [];
+        let first = 1;
+        console.log(first);
+        for (let i = 1; i <= first; i++) {
+          let choice = Math.floor(Math.random() * 4) + 1;
+          simon.push(choice);
+          window.setTimeout(() => {
+            light(choice);
+          }, 300);
+          console.log(simon);
+        }
       });
+
+      submit.addEventListener("click", () => {});
     </script>
   </body>
 </html>
