@@ -247,6 +247,8 @@
 
       newGame.addEventListener("click", () => {
         incorrect.style.visibility = "hidden";
+        submit.style.visibility = "visible";
+        next.style.visibility = "visible";
         counter.innerText = "1";
         let choice = Math.floor(Math.random() * 4) + 1;
         simon.push(choice);
@@ -259,9 +261,7 @@
       submit.addEventListener("click", () => {
         console.log(simon);
         console.log(player);
-        if (
-          parseInt(JSON.stringify.simon) !== parseInt(JSON.stringify.player)
-        ) {
+        if (JSON.stringify(simon) !== JSON.stringify(player)) {
           incorrect.style.visibility = "visible";
           incorrect.innerText = "Incorrect!";
           simon = [];
