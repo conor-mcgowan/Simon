@@ -64,23 +64,24 @@
         border-radius: 50%;
         background-color: black;
         color: white;
+        font-size: 32px;
         height: 150px;
         width: 150px;
         z-index: 1;
         position: absolute;
         top: 225px;
         left: 225px;
-        /* justify-content: center; */
-        /* align-items: center; */
       }
 
       #simon {
-        font-size: 32px;
+      }
+
+      #incorrect {
+        height: 34px;
       }
 
       #turn {
         align-self: inherit;
-        font-size: 30px;
       }
 
       #grnLit {
@@ -117,7 +118,7 @@
       <div class="button red" id="2"></div>
       <div id="center">
         <div id="simon">Simon</div>
-        <br />
+        <div id="incorrect"></div>
         <br />
         <div id="turn">0</div>
       </div>
@@ -139,10 +140,11 @@
       var newGame = document.getElementById("new");
       var submit = document.getElementById("submit");
       var next = document.getElementById("next");
+      var incorrect = document.getElementById("incorrect");
+      var counter = document.getElementById("turn");
       var simon = [];
       var player = [];
-      var buttonArray = [green, red, blue, yellow];
-      var counter = document.getElementById("turn");
+      // var buttonArray = [green, red, blue, yellow];
 
       // buttonArray.forEach((button) => {
       //   addEventListener("click", (evt) => {
@@ -188,7 +190,7 @@
 
       green.addEventListener("click", () => {
         console.log(green.id);
-        player.push(green.id);
+        player.push(parseInt(green.id));
       });
 
       green.addEventListener("mousedown", () => {
@@ -201,7 +203,7 @@
 
       red.addEventListener("click", () => {
         console.log(red.id);
-        player.push(red.id);
+        player.push(parseInt(red.id));
       });
 
       red.addEventListener("mousedown", () => {
@@ -214,7 +216,7 @@
 
       blue.addEventListener("click", () => {
         console.log(blue.id);
-        player.push(blue.id);
+        player.push(parseInt(blue.id));
       });
 
       blue.addEventListener("mousedown", () => {
@@ -227,7 +229,7 @@
 
       yellow.addEventListener("click", () => {
         console.log(yellow.id);
-        player.push(yellow.id);
+        player.push(parseInt(yellow.id));
       });
 
       yellow.addEventListener("mousedown", () => {
@@ -244,6 +246,8 @@
       // });
 
       newGame.addEventListener("click", () => {
+        incorrect.style.visibility = "hidden";
+        counter.innerText = "1";
         let choice = Math.floor(Math.random() * 4) + 1;
         simon.push(choice);
         window.setTimeout(() => {
@@ -252,7 +256,29 @@
         console.log(simon);
       });
 
-      submit.addEventListener("click", () => {});
+      submit.addEventListener("click", () => {
+        console.log(simon);
+        console.log(player);
+        if (JSON.stringify.simon !== JSON.stringify.player) {
+          incorrect.style.visibility = "visible";
+          incorrect.innerText = "Incorrect!";
+          simon = [];
+          player = [];
+          submit.style.visibility = "hidden";
+          next.style.visibility = "hidden";
+        } else {
+          incorrect.style.visibility = "visible";
+          incorrect.innerText = "Correct!";
+        }
+      });
+
+      next.addEventListener("click", () => {
+        incorrect.style.visibility = "hidden";
+        player = [];
+        let choice = Math.floor(Math.random() * 4) + 1;
+        simon.push(choice);
+        console.log(simon);
+      });
     </script>
   </body>
 </html>
