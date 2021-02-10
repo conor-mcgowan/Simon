@@ -188,6 +188,15 @@
         }
       }
 
+      function furtherLight(times) {
+        let i = 0;
+        if (times <= simon.length) {
+          times++;
+          window.setTimeout(light(`${simon[i]}`), 700);
+          i++;
+        }
+      }
+
       green.addEventListener("click", () => {
         console.log(green.id);
         player.push(parseInt(green.id));
@@ -276,10 +285,21 @@
 
       next.addEventListener("click", () => {
         incorrect.style.visibility = "hidden";
+        counter.innerText++;
         player = [];
         let choice = Math.floor(Math.random() * 4) + 1;
         simon.push(choice);
         console.log(simon);
+        let times = 1;
+        function furtherLight(times) {
+          let i = 0;
+          if (times <= simon.length) {
+            window.setTimeout(light(simon[i]), 700);
+            times++;
+            i++;
+          }
+        }
+        furtherLight(times);
       });
     </script>
   </body>
