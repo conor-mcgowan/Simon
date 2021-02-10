@@ -259,7 +259,9 @@
       submit.addEventListener("click", () => {
         console.log(simon);
         console.log(player);
-        if (JSON.stringify.simon !== JSON.stringify.player) {
+        if (
+          parseInt(JSON.stringify.simon) !== parseInt(JSON.stringify.player)
+        ) {
           incorrect.style.visibility = "visible";
           incorrect.innerText = "Incorrect!";
           simon = [];
